@@ -13,7 +13,7 @@ function Add() {
   const sumbitt = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${dev ? "http://localhost:3000": "https://curd-nextjs-mongodb-cuy.vercel.app"}/api/users/`, {
+      await axios.post(`${dev ? process.env.DEV_URL: process.env.PROD_URL}/api/users/`, {
         nama,
         email,
       });

@@ -9,9 +9,8 @@ function Add() {
   const [email, setEmail] = useState("");
   const router = useRouter();
   const { id } = router.query;
-
   const getUserById = async () => {
-    const res = await axios.get(`${dev ? "http://localhost:3000": "https://curd-nextjs-mongodb-cuy.vercel.app"}/api/users/${id}`);
+    const res = await axios.get(`${dev ? process.env.DEV_URL: process.env.PROD_URL}/api/users/${id}`);
     setName(res.data.nama);
     setEmail(res.data.email);
   };
@@ -23,7 +22,7 @@ function Add() {
   const editt = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`${dev ? "http://localhost:3000": "https://curd-nextjs-mongodb-cuy.vercel.app"}/api/users/${id}`, {
+      await axios.patch(`${dev ? process.env.DEV_URL: process.env.PROD_URL}api/users/${id}`, {
         nama,
         email,
       });
