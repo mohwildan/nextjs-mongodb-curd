@@ -8,7 +8,7 @@ export default function Home() {
   const [data, setData] = useState([]);
   
   const getData = async () => {
-    const res = await axios.get(`${dev ? process.env.DEV_URL: process.env.PROD_URL}/api/users/`);
+    const res = await axios.get(`${dev ? process.env.DEV_URL: process.env.PROD_URL}/api/`);
     setData(res.data);
   };
 
@@ -18,7 +18,7 @@ export default function Home() {
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`${dev ? process.env.DEV_URL: process.env.PROD_URL}/api/users/${id}`);
+      await axios.delete(`${dev ? process.env.DEV_URL: process.env.PROD_URL}/api/${id}`);
       getData();
     } catch (error) {
       console.log(error);

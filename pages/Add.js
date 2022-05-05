@@ -13,7 +13,7 @@ function Add() {
   const sumbitt = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${dev ? process.env.DEV_URL: process.env.PROD_URL}/api/users/`, {
+      await axios.post(`${dev ? process.env.DEV_URL: process.env.PROD_URL}/api/`, {
         nama,
         email,
       });

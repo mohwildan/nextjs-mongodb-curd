@@ -10,7 +10,7 @@ function Add() {
   const router = useRouter();
   const { id } = router.query;
   const getUserById = async () => {
-    const res = await axios.get(`${dev ? process.env.DEV_URL: process.env.PROD_URL}/api/users/${id}`);
+    const res = await axios.get(`${dev ? process.env.DEV_URL: process.env.PROD_URL}/api/${id}`);
     setName(res.data.nama);
     setEmail(res.data.email);
   };
@@ -22,7 +22,7 @@ function Add() {
   const editt = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`${dev ? process.env.DEV_URL: process.env.PROD_URL}api/users/${id}`, {
+      await axios.patch(`${dev ? process.env.DEV_URL: process.env.PROD_URL}api/${id}`, {
         nama,
         email,
       });

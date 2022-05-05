@@ -1,5 +1,5 @@
-import dbConnections from "../../../utils/dbConnection";
-import Users from "../../../model/Users";
+import dbConnections from "../../utils/dbConnection";
+import Users from "../../model/Users";
 
 dbConnections()
 
