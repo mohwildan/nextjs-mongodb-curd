@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
 
+let dev = process.env.NODE_ENV !== "production";
+      
 export default function Home() {
   const [data, setData] = useState([]);
 
   const getData = async () => {
-    const res = await axios.get(`${process.env.PROD_URL}/api/users/`);
+    const res = await axios.get(`${dev ? "http://localhost:3000": "https://curd-nextjs-mongodb-cuy.vercel.app"}/api/users/`);
     setData(res.data);
   };
 
@@ -16,7 +18,7 @@ export default function Home() {
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`${process.env.PROD_URL}/api/users/${id}`);
+      await axios.delete(`${dev ? "http://localhost:3000": "https://curd-nextjs-mongodb-cuy.vercel.app"}/api/users/${id}`);
       getData();
     } catch (error) {
       console.log(error);
@@ -45,3 +47,4 @@ export default function Home() {
     </>
   );
 }
+

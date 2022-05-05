@@ -3,7 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import styled from 'styled-components'
-
+let dev = process.env.NODE_ENV !== 'production';
 function Add() {
   const [nama, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,7 +11,7 @@ function Add() {
   const { id } = router.query;
 
   const getUserById = async () => {
-    const res = await axios.get(`${process.env.PROD_URL}/api/users/${id}`);
+    const res = await axios.get(`${dev ? "http://localhost:3000": "https://curd-nextjs-mongodb-cuy.vercel.app"}/api/users/${id}`);
     setName(res.data.nama);
     setEmail(res.data.email);
   };
@@ -23,7 +23,7 @@ function Add() {
   const editt = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`${process.env.PROD_URL}/api/users/${id}`, {
+      await axios.patch(`${dev ? "http://localhost:3000": "https://curd-nextjs-mongodb-cuy.vercel.app"}/api/users/${id}`, {
         nama,
         email,
       });

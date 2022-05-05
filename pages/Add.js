@@ -8,10 +8,12 @@ function Add() {
   const [email, setEmail] = useState("");
   const router = useRouter();
 
+   let dev = process.env.NODE_ENV !== 'production';
+
   const sumbitt = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.PROD_URL}/api/users/`, {
+      await axios.post(`${dev ? "http://localhost:3000": "https://curd-nextjs-mongodb-cuy.vercel.app"}/api/users/`, {
         nama,
         email,
       });
