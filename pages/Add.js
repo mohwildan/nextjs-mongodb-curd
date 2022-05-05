@@ -11,7 +11,7 @@ function Add() {
   const sumbitt = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("api/users/", {
+      await axios.post("https://curd-nextjs-mongodb-mantap.vercel.app/api/users/", {
         nama,
         email,
       });

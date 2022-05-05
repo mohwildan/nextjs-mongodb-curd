@@ -11,7 +11,7 @@ function Add() {
   const { id } = router.query;
 
   const getUserById = async () => {
-    const res = await axios.get(`api/users/${id}`);
+    const res = await axios.get(`https://curd-nextjs-mongodb-mantap.vercel.app/api/users/${id}`);
     setName(res.data.nama);
     setEmail(res.data.email);
   };
@@ -23,7 +23,7 @@ function Add() {
   const editt = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`api/users/${id}`, {
+      await axios.patch(`https://curd-nextjs-mongodb-mantap.vercel.app/api/users/${id}`, {
         nama,
         email,
       });

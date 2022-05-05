@@ -6,7 +6,7 @@ export default function Home() {
   const [data, setData] = useState([]);
 
   const getData = async () => {
-    const res = await axios.get("api/users/");
+    const res = await axios.get("https://curd-nextjs-mongodb-mantap.vercel.app/api/users/");
     setData(res.data);
   };
 
@@ -16,7 +16,7 @@ export default function Home() {
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`api/users/${id}`);
+      await axios.delete(`https://curd-nextjs-mongodb-mantap.vercel.app/api/users/${id}`);
       getData();
     } catch (error) {
       console.log(error);
@@ -32,14 +32,13 @@ export default function Home() {
         return (
           <div key={item._id}>
             <h4>
-              {index + 1}.{item.nama}  <Link href={item._id}>
-              <button>edit</button>
-            </Link><button onClick={() => deleteUser(item._id)}>delete</button>
+              {index + 1}.{item.nama}{" "}
+              <Link href={item._id}>
+                <button>edit</button>
+              </Link>
+              <button onClick={() => deleteUser(item._id)}>delete</button>
             </h4>
-            <p>
-              {item.email}
-            </p>
-
+            <p>{item.email}</p>
           </div>
         );
       })}
